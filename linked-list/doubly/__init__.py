@@ -1,58 +1,42 @@
 '''
-[Head]                              [Tail]
-[value, next] -> [value1, next1] -> [value2, next2]
+[Head]                                
+[prev, value, next] <-> [prev1, value1, next1] <-> [prev2, value2, next2]
 
 ** Insert **
+prepend
 append
-appendWithTail
 
 ** Remove **
 remove
+removeHead?
 
 ** Iterate **
-get
+find
 __toList__
+__toString__
 '''
 
 class Node:
-    def __init__(self, value = None, next = None):
+    def __init__(self, value = None, next = None, prev = None):
         self.value = value
+        self.prev = prev if prev else None
         self.next = next if next else None
 
 class LinkedList:
     def __init__(self, value = None):
         self.head = None
-        self.tail = None
         self.length = 0
 
         if (value):
             node = Node(value)
 
             self.head = node
-            self.tail = node
-            self.head.next = self.tail
             self.updateLen()
 
     def updateLen(self, v = 1):
         self.length = self.length + v
 
-    def appendWithTail(self, value):
-        node = Node(value)
-
-        if self.head == None:
-            self.head = node
-            self.tail = node
-            self.updateLen()
-            return
-
-        self.tail.next = node
-        self.tail = node
-        self.updateLen()
-
     def append(self, value):
-        node = Node(value, self.tail)
-        self.tail = node
-
         node = Node(value)
 
         currentNode = self.head
@@ -62,11 +46,17 @@ class LinkedList:
                 currentNode = currentNode.next
             else:
                 currentNode.next = node
-                this.tail = node
+                node.prev = currentNode
                 self.length += 1
                 return
+    
+    def prepend(self, value):
+        node = Node(value, self.head)
+        self.head.prev = node
+        self.head = node
+        self.updateLen()
 
-    def get(self, value):
+    def find(self, value):
         currentNode = self.head
 
         while (currentNode):
@@ -76,18 +66,25 @@ class LinkedList:
         
         return None
 
+    def removeHead(self):
+        return self.remove(self.head.value)
+
     def remove(self, value):
-        if self.head.value == value and self.tail.value == value:
-            self.head = None
-            self.tail = None
+        if self.head.value == value:
+            if self.head.next:
+                self.head.next.prev = None
+                self.head = self.head.next
+            else:
+                self.head = None
             self.updateLen(-1)
             return
 
         currentNode = self.head
 
         while currentNode:
-            if currentNode.next.value == value:
+            if currentNode.next and currentNode.next.value == value:
                 c = currentNode.next
+                currentNode.next.next.prev = currentNode
                 currentNode.next = currentNode.next.next
                 self.updateLen(-1)
                 return c
@@ -106,15 +103,33 @@ class LinkedList:
 
         return l
 
+    def __toString__ (self):
+        currentNode = self.head
+
+        l = ''
+        while currentNode:
+            prev = currentNode.prev.value if currentNode.prev else 'None'
+            next = currentNode.next.value if currentNode.next else 'None'
+            l += 'prev: ' + prev + ' value: ' + currentNode.value + ' next: ' + next + '\n'
+            currentNode = currentNode.next
+
+        return l
 
 linkedList = LinkedList('a')
-linkedList.appendWithTail('b')
-linkedList.appendWithTail('c')
-linkedList.appendWithTail('c1')
-linkedList.appendWithTail('d')
+linkedList.append('b')
+linkedList.append('c')
+linkedList.append('c1')
+linkedList.append('d')
+linkedList.append('a1')
+
+linkedList.prepend('a2')
+linkedList.prepend('a1')
 
 linkedList.remove('b')
+linkedList.removeHead()
 
+print(linkedList.find('b'))
 print(linkedList.length)
 print(linkedList.__toList__())
+print(linkedList.__toString__())
         
