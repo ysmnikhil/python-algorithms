@@ -40,6 +40,9 @@ class LinkedList:
 
         currentNode = self.head
 
+        if not self.head:
+            self.head = node
+
         while (currentNode):
             if currentNode.next:
                 currentNode = currentNode.next
@@ -68,12 +71,13 @@ class LinkedList:
 
     def remove(self, value):
         if self.head.value == value:
+            c = self.head
             if self.head.next:
                 self.head = self.head.next
             else:
                 self.head = None
             self.updateLen(-1)
-            return
+            return c
 
         currentNode = self.head
 
@@ -109,21 +113,22 @@ class LinkedList:
 
         return l
 
-linkedList = LinkedList('a')
-linkedList.append('b')
-linkedList.append('c')
-linkedList.append('c1')
-linkedList.append('d')
+if __name__ == "__main__":
+    linkedList = LinkedList('a')
+    linkedList.append('b')
+    linkedList.append('c')
+    linkedList.append('c1')
+    linkedList.append('d')
 
-linkedList.append('a1')
-linkedList.prepend('a2')
-linkedList.prepend('a1')
+    linkedList.append('a1')
+    linkedList.prepend('a2')
+    linkedList.prepend('a1')
 
-linkedList.remove('b')
-linkedList.removeHead()
+    linkedList.remove('b')
+    linkedList.removeHead()
 
-print(linkedList.find('b'))
-print(linkedList.length)
-print(linkedList.__toList__())
-print(linkedList.__toString__())
+    print(linkedList.find('b'))
+    print(linkedList.length)
+    print(linkedList.__toList__())
+    print(linkedList.__toString__())
         
