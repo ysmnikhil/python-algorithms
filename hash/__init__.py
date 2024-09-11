@@ -45,6 +45,10 @@ if __name__ == "__main__":
     hash.add('a3')
     hash.add('a4')
     hash.add('a')
+    hash.add('My name is Nikhil')
+    hash.add('My name is Nikhil Malik')
+    hash.add('My name is Nikhil Chaudhary')
+    hash.add('My name is Nikka')
 
     print(hash.find('a6'))
 
