@@ -12,15 +12,15 @@ This repository is a collection of data structures and algorithms implemented in
 - [ ] Implement a graph
 - [ ] Implement a tree
 - [ ] Implement a trie
-- [x] Implement a [heap] (MIT 6006/Chapter 4/heap.py)
+- [x] Implement a [heap] (MIT%206006/Chapter%204/heap.py)
 - [ ] Implement a priority queue
 - [ ] Implement a binary search tree
 - [ ] Implement a binary heap
 - [ ] Implement a binary search tree
 - [ ] Sorting
     - [x] [Bubble Sort](sorting/bubble/__init__.py)
-    - [x] [Selection Sort](MIT 6006/Chapter 3/sorting/selection.py)
-    - [x] [Merge Sort](MIT 6006/Chapter 3/sorting/merge.py)
-    - [x] [Insertion Sort](MIT 6006/Chapter 3/sorting/insertion.py)
+    - [x] [Selection Sort](MIT%206006/Chapter%203/sorting/selection.py)
+    - [x] [Merge Sort](MIT%206006/Chapter%203/sorting/merge.py)
+    - [x] [Insertion Sort](MIT%206006/Chapter%203/sorting/insertion.py)
 - [ ] Problems
     - [x] [Ant in a circle](problems/ant-in-circle.py)
