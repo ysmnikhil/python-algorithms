@@ -1,5 +1,6 @@
 '''
-Heap:
+Heap: 
+Max head: Almost complete biranry tree. The parant will be larger than the left and right child
 O(nlogn)
 but as we compare the results from top to bottom the work becomes less and the complexity will become O(n)
 '''

@@ -14,9 +14,9 @@ This repository is a collection of data structures and algorithms implemented in
 - [ ] Implement a trie
 - [x] Implement a [heap] (MIT%206006/Chapter%204/heap.py)
 - [ ] Implement a priority queue
-- [ ] Implement a binary search tree
+- [ ] Implement a [binary search tree](MIT%206006/Chapter%205/bst.py) 
 - [ ] Implement a binary heap
-- [ ] Implement a binary search tree
+- [ ] Implement a [balanced binary search tree| AVL](MIT%206006/Chapter%206/avl.py) 
 - [ ] Sorting
     - [x] [Bubble Sort](sorting/bubble/__init__.py)
     - [x] [Selection Sort](MIT%206006/Chapter%203/sorting/selection.py)
