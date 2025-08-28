@@ -24,3 +24,7 @@ This repository is a collection of data structures and algorithms implemented in
     - [x] [Insertion Sort](MIT%206006/Chapter%203/sorting/insertion.py)
 - [ ] Problems
     - [x] [Ant in a circle](problems/ant-in-circle.py)
+
+## Notes:
+Selection sort: "Find the right element for each position"
+Insertion sort: "Find the right position for each element"
