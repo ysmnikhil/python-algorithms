@@ -1,6 +1,10 @@
 '''
 Merge sort:
 Array will be sort by dividing into sub-array and so on, we will select the value and compare it with the left value and continue to do that and replace the min value until we reach the starting of array for each loop.
+time complexity | O(nlong) | as we have 1 loop and then dividing the array in 2 parts which we become logn
+space complexity | O(n) 
+
+Think of it like organizing a massive library. Instead of trying to sort all the books at once, you'd divide the library into sections, sort each section separately, then merge the sorted sections back together. The brilliant insight is that merging two already-sorted lists is much easier than sorting one big unsorted list from scratch.
 '''
 
 def divideForMerge (loV):
