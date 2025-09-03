@@ -1,47 +1,46 @@
-# merge sort | bottom-up
-# time complexity | O(nlong) | as we have 1 loop and then dividing the array in 2 parts which we become logn
+# quick sort
+# time complexity | O(nlogn) | worst case O(n2)
 # space complexity | O(1) 
-def merge(left, right):
-    arr = []
-    
-    i = j = 0
-    while i < len(left) and j < len(right):
-        if left[i] >= right[j]:
-            arr.append(right[j])
-            j = j + 1
+import random
+
+def pivot_random (arr, start, end):
+    pivot = arr[random.randint(start, end)]
+    return pivot
+
+def pivot_median (arr, start, end):
+    mid = ( start + end ) // 2
+    first = arr[start]
+    middle = arr[mid]
+    last = arr[end]
+
+    if first >= middle >= last or last >= middle >= first:
+        return middle
+    elif middle >= first >= last or last >= first >= middle:
+        return first
+    else:
+        return last
+
+def partition(to_be_sorted, pivot):
+    smaller = []
+    equal = []
+    larger = []
+    print(to_be_sorted)
+    print(pivot)
+    for i in range(len(to_be_sorted)):
+        if to_be_sorted[i] > pivot:
+            larger.append(to_be_sorted[i])
+        elif to_be_sorted[i] == pivot:
+            equal.append(to_be_sorted[i])
         else:
-            arr.append(left[i])
-            i = i + 1
+            smaller.append(to_be_sorted[i])
 
-    arr = arr + left[i:] + right[j:]
+    result = smaller + equal + larger
+    return result, len(smaller) 
 
-    return arr
-
-def divide_and_merge(arr):
-    if len(arr) <= 1:  # Handle edge case
-        return arr
-    
-    n = len(arr)
-    width = 1
-    while width < n:
-        print(f"width {width}")
-        print(f"range {range(0, n, 2*width)}")
-        for i in range(0, n, 2*width):
-            print(f"i {i}")
-            left = arr[i:i+width]
-            right = arr[i+width:i+2*width]
-            print(f"left {left}")
-            print(f"right {right}")
-            print(f"i:i+2*width {i, i+2*width}")
-
-            arr[i:i+2*width] = merge(left, right)
-        width *= 2
-    return arr
-
-def sort(to_be_sorted):
-    arr = to_be_sorted.copy()
-    return divide_and_merge(arr)
+def sort (to_be_sorted):
+    result = partition(to_be_sorted, pivot_median(to_be_sorted, 0, len(to_be_sorted) - 1))
+    return result
 
 print(sort([2, 6, 1, 7, 9, 9, 4]))
-print(sort([2, 6, 1, 7, 9, 9, 4, 99, 3, 1, 3, 98, 745, 7]))
+# print(sort([2, 6, 1, 7, 9, 9, 4, 99, 3, 1, 3, 98, 745, 7]))
 
