@@ -1,12 +1,15 @@
 import sys
 import os
 import importlib
+import importlib.util
 
-# Add the parent directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Now import the module
-LinkedList = importlib.import_module('linked-list.single').LinkedList
+# Load linked list module from filesystem path (folder names contain hyphens)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+LINKED_LIST_PATH = os.path.join(BASE_DIR, "02-linked-lists", "01-single", "__init__.py")
+SPEC = importlib.util.spec_from_file_location("single_linked_list", LINKED_LIST_PATH)
+linked_list_module = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(linked_list_module)
+LinkedList = linked_list_module.LinkedList
 
 class Stack:
     def __init__(self):
